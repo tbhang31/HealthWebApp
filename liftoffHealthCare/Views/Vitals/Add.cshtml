@@ -1,0 +1,25 @@
+﻿@model liftoffHealthCare.ViewModels.AddVitalViewModel;
+
+<h1>Log your vital signs</h1>
+<form asp-controller="Vitals" asp-action="AddVitalSigns" method="Post">
+    <div class="form-group">
+        <label asp-for="Date"> Date</label>
+        <input type="date" value="2018-07-01" min="2018-07-01" asp-for="Date"/>
+        <span asp-validation-for="Date"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeartRate"> Heart Rate</label>
+        <input asp-for="HeartRate"/>
+        <span asp-validation-for="HeartRate"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Systolic">Blood Pressure</label>
+        <input asp-for="Systolic"/><span> / </span><input asp-for="Diastolic"/>
+        <span asp-validation-for="Systolic"></span><span asp-validation-for="Diastolic"></span>
+    </div>
+    <input type="submit" value="Add vital signs" class="btn btn-danger"/>
+</form>
+<br>
+<form asp-controller="Vitals" asp-action="Index">
+    <button class="btn btn-danger">Cancel</button>
+</form>

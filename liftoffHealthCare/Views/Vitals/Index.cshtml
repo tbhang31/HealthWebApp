@@ -1,0 +1,33 @@
+﻿@using System.Globalization
+@model List<liftoffHealthCare.Models.Vital>
+
+
+<h1>Your Vitals</h1>
+
+<form asp-controller="vitals" asp-action="add"><input type="submit" value="Add Vital Signs" class="btn btn-danger"/></form>
+<br>
+<form asp-controller="vitals" asp-action="delete"><input type="submit" value="Delete Vital Signs" class="btn btn-danger"/></form>
+<br>
+@if (Model.Count == 0)
+{
+    <p class="text-center">No vital signs saved!</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <tr>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["DateSort"]">Date</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["HeartRSort"]">Heart Rate</a></th>
+            <th><a asp-action="Index" asp-route-sortOrder="@ViewData["BPSort"]">Blood Pressure</a></th>
+        </tr>
+        @foreach (var vital in Model)
+        {
+            <tr>
+                <td>@vital.Date.ToString("d", DateTimeFormatInfo.InvariantInfo)</td>
+                <td>@vital.HeartRate</td>
+                <td>@vital.Systolic<span>/</span>@vital.Diastolic</td>
+                <td><a asp-controller="Vitals" asp-action="Edit" asp-route-id="@vital.Id">Edit</a></td>
+            </tr>
+        }
+    </table> 
+}

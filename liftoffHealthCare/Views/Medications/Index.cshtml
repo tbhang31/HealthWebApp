@@ -1,0 +1,33 @@
+﻿@using System.Globalization
+@model List<liftoffHealthCare.Models.Medication>
+
+
+<h1>Your Medications</h1>
+
+<form asp-controller="medications" asp-action="add"><input type="submit" value="Add Medications" class="btn btn-danger"/></form>
+<br>
+<form asp-controller="medications" asp-action="delete"><input type="submit" value="Delete Medications" class="btn btn-danger"/></form>
+<br>
+@if (Model.Count == 0)
+{
+    <p class="text-center">No medications saved!</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>Dose</th>
+            <th>Times Per Day</th>
+        </tr>
+        @foreach (var medication in Model)
+        {
+            <tr>
+                <td>@medication.Name</td>
+                <td>@medication.Dosage @medication.DosageDescription</td>
+                <td>@medication.Instruction</td>
+                <td><a asp-controller="medications" asp-action="Edit" asp-route-id="@medication.Id">Edit</a></td>
+            </tr>
+        }
+    </table> 
+}

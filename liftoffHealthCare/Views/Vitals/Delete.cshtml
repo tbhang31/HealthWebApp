@@ -1,0 +1,28 @@
+﻿@using System.Globalization
+@model liftoffHealthCare.Models.Vital
+
+<h1>Delete Entries</h1>
+
+<form asp-controller="Vitals" asp-action="DeleteEntry" method="post">
+    <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>Date</th>
+            <th>Heart Rate</th>
+            <th>Blood Pressure</th>
+        </tr>
+        @foreach (var vital in ViewBag.vitals)
+        {
+            <tr>
+                <td><input type="checkbox" name="ids" value="@vital.Id" class="form-control"></td>
+                <td>@vital.Date.ToString("d", DateTimeFormatInfo.InvariantInfo)</td>
+                <td>@vital.HeartRate</td>
+                <td>@vital.Systolic<span>/</span>@vital.Diastolic</td>
+            </tr>
+        }
+    </table>
+
+
+    <input type="submit" value="Delete Selected Vital Signs" class="btn btn-danger">
+    <button class="btn btn-danger"><a id="cancelLink" class="cancelLink" asp-controller="Vitals" asp-action="Index">Cancel</a></button>
+</form>

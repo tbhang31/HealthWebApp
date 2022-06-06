@@ -1,0 +1,33 @@
+﻿@using System.Globalization
+@model liftoffHealthCare.Models.Vital
+
+<h1>Edit Vital Signs</h1>
+<br>
+
+<form asp-controller="Vitals" asp-action="ProcessEditedVitals" method="post">
+    <input hidden asp-for="Id"/>
+    <div class="form-group">
+        <label asp-for="Date"> Date</label>
+        <input type="date" min="@Model.Date.ToString("d", DateTimeFormatInfo.InvariantInfo)" asp-for="Date"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="HeartRate"> Heart Rate</label>
+        <input asp-for="HeartRate" value="@Model.HeartRate"/>
+        <span asp-validation-for="HeartRate"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Systolic"> Blood Pressure(Systolic) </label>
+        <input asp-for="Systolic" value="@Model.Systolic"/>
+        <span asp-validation-for="Systolic"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Diastolic"> Blood Pressure(Distolic) </label>
+        <input asp-for="Diastolic" value="@Model.Diastolic"/>
+        <span asp-validation-for="Diastolic"></span>
+    </div>
+    <input type="submit" value="Update Vital Signs" class="btn btn-danger"/>
+    <button class="btn btn-danger"><a id="cancelLink" class="cancelLink" asp-controller="Vitals" asp-action="Index">Cancel</a></button>
+</form>
+
+
+

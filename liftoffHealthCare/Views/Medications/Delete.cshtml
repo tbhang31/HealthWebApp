@@ -1,0 +1,27 @@
+﻿@using System.Globalization
+@model liftoffHealthCare.Models.Medication
+
+<h1>Delete Entries</h1>
+
+<form asp-controller="Medications" asp-action="DeleteEntry" method="post">
+    <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Dose</th>
+            <th>Times Per Day</th>
+        </tr>
+        @foreach (var medication in ViewBag.Medications)
+        {
+            <tr>
+                <td><input type="checkbox" name="ids" value="@medication.Id" class="form-control"></td>
+                <td>@medication.Name</td>
+                <td>@medication.Dosage @medication.DosageDescription</td>
+                <td>@medication.Instruction</td>
+            </tr>
+        }
+    </table>
+
+    <input type="submit" value="Delete Selected Medications" class="btn btn-danger">
+    <button class="btn btn-danger"><a id="cancelLink" class="cancelLink" asp-controller="Medications" asp-action="Index">Cancel</a></button></>
+</form>
