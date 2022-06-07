@@ -19,6 +19,7 @@ else
             <th><a asp-action="Index" asp-route-sortOrder="@ViewData["DateSort"]">Date</a></th>
             <th><a asp-action="Index" asp-route-sortOrder="@ViewData["HeartRSort"]">Heart Rate</a></th>
             <th><a asp-action="Index" asp-route-sortOrder="@ViewData["BPSort"]">Blood Pressure</a></th>
+            <th>Medications</th>
         </tr>
         @foreach (var vital in Model)
         {
@@ -26,6 +27,14 @@ else
                 <td>@vital.Date.ToString("d", DateTimeFormatInfo.InvariantInfo)</td>
                 <td>@vital.HeartRate</td>
                 <td>@vital.Systolic<span>/</span>@vital.Diastolic</td>
+                <td>
+                    <ul>
+                        @foreach (Medication medication in vital.Medications)
+                        {
+                            <li>@medication.Name @medication.Dosage @medication.DosageDescription</li>
+                        }
+                    </ul>
+                </td>
                 <td><a asp-controller="Vitals" asp-action="Edit" asp-route-id="@vital.Id">Edit</a></td>
             </tr>
         }

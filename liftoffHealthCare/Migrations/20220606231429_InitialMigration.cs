@@ -156,29 +156,6 @@ namespace liftoffHealthCare.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Medications",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    Dosage = table.Column<double>(nullable: false),
-                    DosageDescription = table.Column<int>(nullable: false),
-                    Instruction = table.Column<int>(nullable: false),
-                    ApplicationUserId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Medications", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Medications_AspNetUsers_ApplicationUserId",
-                        column: x => x.ApplicationUserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Vitals",
                 columns: table => new
                 {
@@ -199,6 +176,60 @@ namespace liftoffHealthCare.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Medications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    Dosage = table.Column<double>(nullable: false),
+                    DosageDescription = table.Column<int>(nullable: false),
+                    Instruction = table.Column<int>(nullable: false),
+                    ApplicationUserId = table.Column<string>(nullable: true),
+                    VitalId = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Medications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Medications_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Medications_Vitals_VitalId",
+                        column: x => x.VitalId,
+                        principalTable: "Vitals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VitalMedications",
+                columns: table => new
+                {
+                    VitalId = table.Column<int>(nullable: false),
+                    MedicationId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VitalMedications", x => new { x.VitalId, x.MedicationId });
+                    table.ForeignKey(
+                        name: "FK_VitalMedications_Medications_MedicationId",
+                        column: x => x.MedicationId,
+                        principalTable: "Medications",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_VitalMedications_Vitals_VitalId",
+                        column: x => x.VitalId,
+                        principalTable: "Vitals",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -244,6 +275,16 @@ namespace liftoffHealthCare.Migrations
                 column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Medications_VitalId",
+                table: "Medications",
+                column: "VitalId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_VitalMedications_MedicationId",
+                table: "VitalMedications",
+                column: "MedicationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vitals_ApplicationUserId",
                 table: "Vitals",
                 column: "ApplicationUserId");
@@ -267,13 +308,16 @@ namespace liftoffHealthCare.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "VitalMedications");
+
+            migrationBuilder.DropTable(
+                name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
                 name: "Medications");
 
             migrationBuilder.DropTable(
                 name: "Vitals");
-
-            migrationBuilder.DropTable(
-                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

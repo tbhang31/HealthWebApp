@@ -240,9 +240,14 @@ namespace liftoffHealthCare.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int?>("VitalId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("VitalId");
 
                     b.ToTable("Medications");
                 });
@@ -356,6 +361,10 @@ namespace liftoffHealthCare.Migrations
                     b.HasOne("liftoffHealthCare.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("liftoffHealthCare.Models.Vital", null)
+                        .WithMany("Medications")
+                        .HasForeignKey("VitalId");
                 });
 
             modelBuilder.Entity("liftoffHealthCare.Models.Vital", b =>

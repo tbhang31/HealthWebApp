@@ -10,7 +10,7 @@ namespace liftoffHealthCare.ViewModels
     public class AddVitalMedicationViewModel
     {
         [Required(ErrorMessage = "Vitals Entry ID required")]
-        public int VitalId { get; set; }
+        public int VitalsId { get; set; }
 
         public Vital Vitals { get; set; }
 

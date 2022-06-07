@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace liftoffHealthCare.Models
 {
@@ -9,6 +10,7 @@ namespace liftoffHealthCare.Models
         public int HeartRate { get; set; }
         public int Systolic { get; set; }
         public int Diastolic { get; set; }
+        public List<Medication> Medications { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
 

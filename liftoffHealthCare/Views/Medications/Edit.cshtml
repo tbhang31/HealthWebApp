@@ -23,5 +23,8 @@
         <select asp-for="Instruction" asp-items="Model.Times"></select>
     </div>
     <input type="submit" value="Update medication" class="btn btn-danger"/>
-    <button class="btn btn-danger"><a id="cancelLink" class="cancelLink" asp-controller="Medications" asp-action="Index">Cancel</a></button></>
+</form>
+<br>
+<form asp-controller="Medications" asp-action="Index">
+    <button class="btn btn-danger">Cancel</button>
 </form>

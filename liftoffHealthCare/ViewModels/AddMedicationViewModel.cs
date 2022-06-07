@@ -35,6 +35,7 @@ namespace liftoffHealthCare.ViewModels
 
         public List<SelectListItem> Times { get; set; } = new List<SelectListItem>
         {
+            new SelectListItem(Instructions.select.ToString(),((int)Instructions.daily).ToString()),
             new SelectListItem(Instructions.daily.ToString(),((int)Instructions.daily).ToString()),
             new SelectListItem(Instructions.bid.ToString(),((int)Instructions.bid).ToString()),
             new SelectListItem(Instructions.tid.ToString(),((int)Instructions.tid).ToString()),

@@ -17,6 +17,13 @@
         <input asp-for="Systolic"/><span> / </span><input asp-for="Diastolic"/>
         <span asp-validation-for="Systolic"></span><span asp-validation-for="Diastolic"></span>
     </div>
+    <div>
+        @foreach (var medication in @Model.Medications)
+        {
+            <label for="selectedMedications">@medication.Name</label>
+            <input type="checkbox" name="selectedMedications" value="@medication.Id"/>
+        }
+    </div>
     <input type="submit" value="Add vital signs" class="btn btn-danger"/>
 </form>
 <br>

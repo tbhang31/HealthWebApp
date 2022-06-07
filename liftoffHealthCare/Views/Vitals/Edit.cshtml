@@ -26,7 +26,10 @@
         <span asp-validation-for="Diastolic"></span>
     </div>
     <input type="submit" value="Update Vital Signs" class="btn btn-danger"/>
-    <button class="btn btn-danger"><a id="cancelLink" class="cancelLink" asp-controller="Vitals" asp-action="Index">Cancel</a></button>
+</form>
+<br>
+<form asp-controller="Vitals" asp-action="Index">
+    <button class="btn btn-danger">Cancel</button>
 </form>
 
 

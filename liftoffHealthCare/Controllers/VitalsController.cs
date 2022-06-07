@@ -54,7 +54,8 @@ namespace liftoffHealthCare.Controllers
 
         public IActionResult Add()
         {
-            AddVitalViewModel viewModel = new AddVitalViewModel();
+            List<Medication> medications = context.Medications.ToList();
+            AddVitalViewModel viewModel = new AddVitalViewModel(medications);
             return View(viewModel);
         }
 
@@ -75,7 +76,7 @@ namespace liftoffHealthCare.Controllers
                     VitalMedication newVitalMedication = new VitalMedication
                     {
                         MedicationId = int.Parse(selectedMedications[i]),
-                        Vital = newVitals,
+                        Vitals = newVitals,
                         VitalId = newVitals.Id
                     };
                     context.VitalMedications.Add(newVitalMedication);

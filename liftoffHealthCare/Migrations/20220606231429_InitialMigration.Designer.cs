@@ -9,7 +9,7 @@ using liftoffHealthCare.Data;
 namespace liftoffHealthCare.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220603194341_InitialMigration")]
+    [Migration("20220606231429_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -242,9 +242,14 @@ namespace liftoffHealthCare.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int?>("VitalId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("VitalId");
 
                     b.ToTable("Medications");
                 });
@@ -275,6 +280,21 @@ namespace liftoffHealthCare.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Vitals");
+                });
+
+            modelBuilder.Entity("liftoffHealthCare.Models.VitalMedication", b =>
+                {
+                    b.Property<int>("VitalId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MedicationId")
+                        .HasColumnType("int");
+
+                    b.HasKey("VitalId", "MedicationId");
+
+                    b.HasIndex("MedicationId");
+
+                    b.ToTable("VitalMedications");
                 });
 
             modelBuilder.Entity("liftoffHealthCare.Models.ApplicationUser", b =>
@@ -343,6 +363,10 @@ namespace liftoffHealthCare.Migrations
                     b.HasOne("liftoffHealthCare.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("liftoffHealthCare.Models.Vital", null)
+                        .WithMany("Medications")
+                        .HasForeignKey("VitalId");
                 });
 
             modelBuilder.Entity("liftoffHealthCare.Models.Vital", b =>
@@ -350,6 +374,21 @@ namespace liftoffHealthCare.Migrations
                     b.HasOne("liftoffHealthCare.Models.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
+                });
+
+            modelBuilder.Entity("liftoffHealthCare.Models.VitalMedication", b =>
+                {
+                    b.HasOne("liftoffHealthCare.Models.Medication", "Medication")
+                        .WithMany()
+                        .HasForeignKey("MedicationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("liftoffHealthCare.Models.Vital", "Vital")
+                        .WithMany()
+                        .HasForeignKey("VitalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
