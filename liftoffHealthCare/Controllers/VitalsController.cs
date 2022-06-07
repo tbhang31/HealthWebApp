@@ -24,7 +24,7 @@ namespace liftoffHealthCare.Controllers
         public IActionResult Index(string sortOrder)
         {
             ViewData["DateSort"] = sortOrder == "dateLate" ? "dateEarly" : "dateLate";
-            ViewData["HeartRSort"] = String.IsNullOrEmpty(sortOrder) ? "heart_rate" : "";
+            ViewData["HeartHighLow"] = sortOrder !="heart_rate_high" ? "heart_rate_high" : "heart_rate_low";
             ViewData["BPSort"] = sortOrder == "systolicLow" ? "systolicHigh" : "systolicLow";
             var vitals = from v in context.Vitals
                         select v;
@@ -36,8 +36,11 @@ namespace liftoffHealthCare.Controllers
                 case "dateLate":
                     vitals = vitals.OrderBy(v => v.Date);
                     break;
-                case "heart_rate":
+                case "heart_rate_high":
                     vitals = vitals.OrderByDescending(v => v.HeartRate);
+                    break;
+                case "heart_rate_low":
+                    vitals = vitals.OrderBy(v => v.HeartRate);
                     break;
                 case "systolicLow":
                     vitals = vitals.OrderBy(v => v.Systolic);
@@ -127,6 +130,21 @@ namespace liftoffHealthCare.Controllers
                 return Redirect("/vitals");
             }
             return View("/Edit");
+        }
+
+        public IActionResult Details(int id)
+        {
+            Vital vitals = context.Vitals
+                .Include(v => v.ApplicationUser)
+                .Single(v => v.Id == id);
+
+            List<VitalMedication> vitalMedications = context.VitalMedications
+                .Where(vm => vm.VitalId == id)
+                .Include(vm=> vm.Medication)
+                .ToList();
+
+            VitalsMedicationViewModel viewModel = new VitalsMedicationViewModel(vitals, vitalMedications);
+            return View(viewModel);
         }
     }
 }
