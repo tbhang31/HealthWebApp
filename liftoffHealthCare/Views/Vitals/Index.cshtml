@@ -25,8 +25,8 @@ else
         {
             <tr>
                 <td>@vital.Date.ToString("d", DateTimeFormatInfo.InvariantInfo)</td>
-                <td>@vital.HeartRate</td>
-                <td>@vital.Systolic<span>/</span>@vital.Diastolic</td>
+                <td id="vitalHeartRate">@vital.HeartRate</td>
+                <td><span id="vitalSystolic">@vital.Systolic</span>/<span id="vitalDiastolic">@vital.Diastolic</span></td>
                 <td><a asp-controller="Vitals" asp-action="Details" asp-route-id="@vital.Id" >View</a></td>
                 <td><a asp-controller="Vitals" asp-action="Edit" asp-route-id="@vital.Id">Edit</a></td>
             </tr>

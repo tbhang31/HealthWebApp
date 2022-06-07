@@ -1,6 +1,8 @@
 ﻿window.addEventListener("load", function () {
+
     console.log("Window and assosciated scripts loaded successfully")
     let vitalSubmit = document.getElementById("vitalSubmit");
+
     vitalSubmit.addEventListener("submit", ()=>checkVitalSigns(event));
 
     function checkVitalSigns(event) {
