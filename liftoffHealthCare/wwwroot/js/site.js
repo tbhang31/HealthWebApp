@@ -1,6 +1,31 @@
 ﻿window.addEventListener("load", function () {
-
     console.log("Window and assosciated scripts loaded successfully")
+
+    let vitalTable = document.getElementById("vitals-table")
+    let heartData = document.getElementById("vitalHeartRate")
+    let systolicData = document.getElementById("vitalSystolic")
+    let diastolicData = document.getElementById("vitalDiastolic")
+
+    for (let i = 0, cell; cell = vitalTable.rows[i]; i++) {
+        if (Number(heartData.innerText) > 135) {
+            heartData.style.color = 'red';
+        } else if (Number(heartData.innerText) < 60) {
+            heartData.style.color = 'dodgerblue'
+        }
+
+        if (Number(systolicData.innerText) > 175) {
+            systolicData.style.color = 'red';
+        } else if (Number(systolicData.innerText) < 90) {
+            systolicData.style.color ='dodgerblue'
+        }
+
+        if (Number(diastolicData.innerText) > 92) {
+            diastolicData.style.color = 'red';
+        } else if (Number(diastolicData.innerText) < 60) {
+            diastolicData.style.color = 'dodgerblue'
+        }
+    }
+
     let vitalSubmit = document.getElementById("vitalSubmit");
 
     vitalSubmit.addEventListener("submit", ()=>checkVitalSigns(event));
@@ -30,6 +55,7 @@
         }
 
     }
+
 })
 
 

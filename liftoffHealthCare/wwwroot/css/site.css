@@ -97,6 +97,15 @@ body {
     }
 }
 
+.vital-high {
+    color: darkred;
+    font-weight: bold;
+}
+
+.vital-low {
+    color:dodgerblue;
+    font-style:italic;
+}
 
 a #cancelLink .cancelLink {
     color: white;
