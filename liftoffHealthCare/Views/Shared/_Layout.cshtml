@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-red border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img class="heart" src="~/img/istockphoto-1223367353-612x612.jpg" alt="Home page icon" width="62" height="62"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -28,6 +28,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark animate-button" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark animate-button" asp-area="" asp-controller="Home" asp-action="Resources">Resources</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark animate-button" asp-area="" asp-controller="Vitals" asp-action="Index">My Vitals</a>
@@ -48,7 +51,12 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - Heart Logger - <a asp-area="" asp-controller="Home" asp-action="About">About</a>
+            <span class="footer-link"><a class="footer-link animate-button" asp-area="" asp-controller="Home" asp-action="Index">Home</a></span>
+            <span class="footer-link"><a class="footer-link animate-button" asp-area="" asp-controller="Home" asp-action="About">About</a></span>
+            <span class="footer-link"><a class="footer-link animate-button" asp-area="" asp-controller="Home" asp-action="Resources">Resources</a></span>
+            <span class="footer-link"><a class="footer-link animate-button" asp-area="" asp-controller="Vitals" asp-action="Index">My Vitals</a></span>
+            <span class="footer-link"><a class="footer-link animate-button" asp-area="" asp-controller="Medications" asp-action="Index">My Medications</a></span>
+            <span class="footer-link">&copy; 2022 - Heart Logger</span>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
