@@ -7,7 +7,7 @@ namespace liftoffHealthCare.ViewModels
 {
     public class AddMedicationViewModel
     {
-        public int MedicationId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage ="You must include the medication name (brand name or generic)")]
         public string Name { get; set; }
@@ -27,7 +27,8 @@ namespace liftoffHealthCare.ViewModels
             new SelectListItem(DosageDescription.L.ToString(),((int)DosageDescription.L).ToString()),
             new SelectListItem(DosageDescription.oz.ToString(),((int)DosageDescription.oz).ToString()),
             new SelectListItem(DosageDescription.tsp.ToString(),((int)DosageDescription.tsp).ToString()),
-            new SelectListItem(DosageDescription.tbsp.ToString(),((int)DosageDescription.tbsp).ToString())
+            new SelectListItem(DosageDescription.tbsp.ToString(),((int)DosageDescription.tbsp).ToString()),
+            new SelectListItem(DosageDescription.puffs.ToString(),((int)DosageDescription.puffs).ToString())
         };
 
         [Required(ErrorMessage = "You must include how many times you can take the medication")]
@@ -35,11 +36,11 @@ namespace liftoffHealthCare.ViewModels
 
         public List<SelectListItem> Times { get; set; } = new List<SelectListItem>
         {
-            new SelectListItem(Instructions.select.ToString(),((int)Instructions.daily).ToString()),
+            new SelectListItem(Instructions.select.ToString(),((int)Instructions.select).ToString()),
             new SelectListItem(Instructions.daily.ToString(),((int)Instructions.daily).ToString()),
             new SelectListItem(Instructions.bid.ToString(),((int)Instructions.bid).ToString()),
             new SelectListItem(Instructions.tid.ToString(),((int)Instructions.tid).ToString()),
-            new SelectListItem(Instructions.qid.ToString(),((int)Instructions.q2h).ToString()),
+            new SelectListItem(Instructions.qid.ToString(),((int)Instructions.qid).ToString()),
             new SelectListItem(Instructions.prn.ToString(),((int)Instructions.prn).ToString()),
             new SelectListItem(Instructions.other.ToString(),((int)Instructions.other).ToString()),
         };

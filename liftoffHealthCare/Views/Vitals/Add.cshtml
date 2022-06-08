@@ -5,17 +5,17 @@
     <div class="form-group">
         <label asp-for="Date"> Date</label>
         <input type="date" value="2018-07-01" min="2018-07-01" asp-for="Date"/>
-        <span asp-validation-for="Date"></span>
+        <span class="red-alert" asp-validation-for="Date"></span>
     </div>
     <div class="form-group">
         <label asp-for="HeartRate"> Heart Rate</label>
         <input id="heartRate" asp-for="HeartRate"/>
-        <span asp-validation-for="HeartRate"></span>
+        <span class="red-alert" asp-validation-for="HeartRate"></span>
     </div>
     <div class="form-group">
         <label asp-for="Systolic">Blood Pressure</label>
         <input id="systolic" asp-for="Systolic"/><span> / </span><input id="diastolic" asp-for="Diastolic"/>
-        <span asp-validation-for="Systolic"></span><span asp-validation-for="Diastolic"></span>
+        <span class="red-alert" asp-validation-for="Systolic"></span><span asp-validation-for="Diastolic"></span>
     </div>
     <div>
         @foreach (var medication in @Model.Medications)

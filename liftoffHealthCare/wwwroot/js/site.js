@@ -2,27 +2,27 @@
     console.log("Window and assosciated scripts loaded successfully")
 
     let vitalTable = document.getElementById("vitals-table")
-    let heartData = document.getElementById("vitalHeartRate")
-    let systolicData = document.getElementById("vitalSystolic")
-    let diastolicData = document.getElementById("vitalDiastolic")
+    let heartData = document.querySelectorAll(".vitalHeartRate")
+    let systolicData = document.querySelectorAll(".vitalSystolic")
+    let diastolicData = document.querySelectorAll(".vitalDiastolic")
 
     for (let i = 0, cell; cell = vitalTable.rows[i]; i++) {
-        if (Number(heartData.innerText) > 135) {
-            heartData.style.color = 'red';
-        } else if (Number(heartData.innerText) < 60) {
-            heartData.style.color = 'dodgerblue'
+        if (Number(heartData[i].innerText) > 135) {
+            heartData[i].style.color = 'red';
+        } else if (Number(heartData[i].innerText) < 60) {
+            heartData[i].style.color = 'dodgerblue'
         }
 
-        if (Number(systolicData.innerText) > 175) {
-            systolicData.style.color = 'red';
-        } else if (Number(systolicData.innerText) < 90) {
-            systolicData.style.color ='dodgerblue'
+        if (Number(systolicData[i].innerText) > 175) {
+            systolicData[i].style.color = 'red';
+        } else if (Number(systolicData[i].innerText) < 90) {
+            systolicData[i].style.color ='dodgerblue'
         }
 
-        if (Number(diastolicData.innerText) > 92) {
-            diastolicData.style.color = 'red';
-        } else if (Number(diastolicData.innerText) < 60) {
-            diastolicData.style.color = 'dodgerblue'
+        if (Number(diastolicData[i].innerText) > 92) {
+            diastolicData[i].style.color = 'red';
+        } else if (Number(diastolicData[i].innerText) < 60) {
+            diastolicData[i].style.color = 'dodgerblue'
         }
     }
 

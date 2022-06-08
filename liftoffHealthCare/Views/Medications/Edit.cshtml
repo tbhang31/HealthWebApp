@@ -2,29 +2,58 @@
 
 <h1>Edit your medication</h1>
 
-<form asp-controller="medications" asp-action="ProcessEditedMedication" method="post">
-    <input hidden asp-for="MedicationId"/>
-    <div class="form-group">
-        <label asp-for="Name">Medication Name</label>
-        <input asp-for="Name"/>
-        <span asp-validation-for="Name"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Dosage">Dose</label>
-        <input asp-for="Dosage"/>
-        <span asp-validation-for="Dosage"></span>
-    </div>
-    <div class="form-group">id="cancelLink" class="cancelLink"
-        <label asp-for="DosageDescription">Dose Metric</label>
-        <select asp-for="DosageDescription" asp-items="Model.DosageDescriptions"></select>
-    </div>
-    <div class="form-group">
-        <label asp-for="Instruction">Times Per Day</label>
-        <select asp-for="Instruction" asp-items="Model.Times"></select>
-    </div>
-    <input type="submit" value="Update medication" class="btn btn-danger"/>
-</form>
-<br>
-<form asp-controller="Medications" asp-action="Index">
-    <button class="btn btn-danger">Cancel</button>
-</form>
+<section class="flex-container">
+    <section class="flex-child">
+        <form asp-controller="medications" asp-action="ProcessEditedMedication" method="post">
+            <input hidden asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="Name">Medication Name</label>
+                <input asp-for="Name"/>
+                <span class="red-alert" asp-validation-for="Name"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dosage">Dose</label>
+                <input asp-for="Dosage"/>
+                <span asp-validation-for="Dosage"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DosageDescription">Dose Metric</label>
+                <select asp-for="DosageDescription" asp-items="Model.DosageDescriptions"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Instruction">Times Per Day</label>
+                <select asp-for="Instruction" asp-items="Model.Times"></select>
+            </div>
+            <input type="submit" value="Update medication" class="btn btn-danger"/>
+            <button class="btn btn-danger"><a class="cancel" asp-controller="Medications" asp-action="Index">Cancel</a></button>
+        </form>
+    </section>
+    <section class="flex-child">
+        <table class="table table-bordered">
+            <tr>
+                <th>Instruction Abbreviation</th>
+                <th>Instruction Description</th>
+            </tr>
+            <tr>
+                <td>daily</td>
+                <td>Once a day</td>
+            </tr>
+            <tr>
+                <td>bid</td>
+                <td>Twice a day</td>
+            </tr>
+            <tr>
+                <td>tid</td>
+                <td>Three times a day</td>
+            </tr>
+            <tr>
+                <td>qid</td>
+                <td>Four times a day</td>
+            </tr>
+            <tr>
+                <td>prn</td>
+                <td>As needed</td>
+            </tr>
+        </table>
+    </section>
+</section>

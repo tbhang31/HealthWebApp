@@ -97,8 +97,44 @@ body {
     }
 }
 
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.flex-child {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.fa-regular, .fa-circle-check {
+    color: rgb(223,69,69);
+}
+
+.mission-statement {
+    color: rgb(223,69,69);      
+    font-style: italic;
+}
+
+.cancel:hover, .cancel:link, .cancel {
+    color: white;
+    text-decoration: none;
+}
+
+.red-alert {
+    color: red;
+    font-weight:bold;
+    text-align: center;
+} 
+
+.icon-section {
+    margin: 20px 20px 0 0;
+}
+
 .vital-high {
-    color: darkred;
+    color: red;
     font-weight: bold;
 }
 

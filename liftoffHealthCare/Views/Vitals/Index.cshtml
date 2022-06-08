@@ -25,8 +25,41 @@ else
         {
             <tr>
                 <td>@vital.Date.ToString("d", DateTimeFormatInfo.InvariantInfo)</td>
-                <td id="vitalHeartRate" class="test">@vital.HeartRate</td>
-                <td><span id="vitalSystolic" class="test">@vital.Systolic</span>/<span id="vitalDiastolic" class="test">@vital.Diastolic</span></td>
+                @if (vital.HeartRate > 135)
+                {
+                    <td class="vital-high">@vital.HeartRate</td>
+                } 
+                else if (vital.HeartRate < 55)
+                {
+                    <td class="vital-low">@vital.HeartRate</td>
+                }
+                else
+                {
+                    <td>@vital.HeartRate</td>
+                }
+                <td>
+                    @if (vital.Systolic > 175)
+                    {
+                        <span class="vital-high">@vital.Systolic</span>
+                    } else if (vital.Systolic < 90)
+                    {
+                        <span class="vital-low">@vital.Systolic</span>
+                    } else
+                    {
+                        <span>@vital.Systolic</span>
+                    }
+                    <span>/</span>
+                    @if (vital.Diastolic > 92)
+                    {
+                        <span class="vital-high">@vital.Diastolic</span>
+                    } else if (vital.Diastolic < 60)
+                    {
+                        <span class="vital-low">@vital.Diastolic</span>
+                    } else
+                    {
+                        <span>@vital.Diastolic</span>
+                    }
+                </td>
                 <td><a asp-controller="Vitals" asp-action="Details" asp-route-id="@vital.Id" >View</a></td>
                 <td><a asp-controller="Vitals" asp-action="Edit" asp-route-id="@vital.Id">Edit</a></td>
             </tr>
