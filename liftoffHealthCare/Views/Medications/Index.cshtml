@@ -32,7 +32,7 @@ else
         @foreach (var medication in Model)
         {
             <tr>
-                <td><a href="https://www.webmd.com/drugs/2/search?type=drugs&query= + @medication.Name">@medication.Name</a></td>
+                <td><a href="https://druginfo.nlm.nih.gov/drugportal/name/ + @medication.Name">@medication.Name</a></td>
                 <td>@medication.Dosage @medication.DosageDescription</td>
                 <td>@medication.Instruction</td>
                 <td><a asp-controller="medications" asp-action="Edit" asp-route-id="@medication.Id">Edit</a></td>
