@@ -1,12 +1,16 @@
 ﻿@using System.Globalization
 @model List<liftoffHealthCare.Models.Vital>
 
-
 <h1>Your Vitals</h1>
-
-<form asp-controller="vitals" asp-action="add"><input type="submit" value="Add Vital Signs" class="btn btn-danger"/></form>
 <br>
-<form asp-controller="vitals" asp-action="delete"><input type="submit" value="Delete Vital Signs" class="btn btn-danger"/></form>
+<section class="flex-container">
+    <section class="flex-child">
+        <form asp-controller="vitals" asp-action="add"><input type="submit" value="Add Vital Signs" class="btn btn-danger"/></form>
+    </section>
+    <section class="flex-child">
+        <form asp-controller="vitals" asp-action="delete"><input type="submit" value="Delete Vital Signs" class="btn btn-danger"/></form>
+    </section>
+</section>
 <br>
 @if (Model.Count == 0)
 {
