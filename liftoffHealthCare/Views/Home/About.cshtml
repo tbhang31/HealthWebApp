@@ -1,6 +1,24 @@
 ﻿@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+<h1>Welcome to the Heart Logger App!</h1>
+<br>
+<section>
+    <h3>About Us</h3>
+    <br>
+    <p>Welcome to the heart logger app! We are proud to present this page as a prototype for an online heart health tracking app!</p>
+    <p>This web app was designed with your heart in mind. Imagine this: you have just recently seen a physician whether at your home practice or in the hospital. Most of the time, when physicians prescribe new heart medications, they tell you "Be sure to measure your heart rate and your blood pressure every morning! Be sure to write them down and call me if anything seems abnormal." </p>
+    <p>But what is an abnormal heart rate or blood pressure? What if I lose the journal with my vital signs, or what if I forget what medications I take?</p>
+    <p>That's why we developed the Heart Logger App! The goal of this web application is to:</p>
+    <ul>
+        <li><a asp-controller="Vitals" asp-action="Index">Let you record your vital signs on our database for you and your doctor to access</a></li>
+        <li><a asp-controller="Medications" asp-action="Index">Let you record your medications on our database for you and your doctor to track</a></li>
+        <li>Let you search your physicians and contact your doctor</li>
+    </ul>
+    <p>In order for you and your doctor to better track your heart health without the hassle. So what are you waiting for? Let's start living life wholeheartedly!'</p>
+    <form asp-area="Identity" asp-page="/Account/Register">
+        <input  class="btn btn-danger" type="submit" value="Register Now"/>
+    </form>
+</section>
 
-<p>Use this page to detail your site's privacy policy.</p>
+

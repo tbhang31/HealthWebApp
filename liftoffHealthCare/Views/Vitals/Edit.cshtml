@@ -9,21 +9,22 @@
     <div class="form-group">
         <label asp-for="Date"> Date</label>
         <input type="date" min="@Model.Date.ToString("d", DateTimeFormatInfo.InvariantInfo)" asp-for="Date"/>
+        <span class="red-alert" asp-validation-for="Date"></span>
     </div>
     <div class="form-group">
         <label asp-for="HeartRate"> Heart Rate</label>
         <input asp-for="HeartRate" value="@Model.HeartRate"/>
-        <span asp-validation-for="HeartRate"></span>
+        <span class="red-alert" asp-validation-for="HeartRate"></span>
     </div>
     <div class="form-group">
         <label asp-for="Systolic"> Blood Pressure(Systolic) </label>
         <input asp-for="Systolic" value="@Model.Systolic"/>
-        <span asp-validation-for="Systolic"></span>
+        <span class="red-alert" asp-validation-for="Systolic"></span>
     </div>
     <div class="form-group">
         <label asp-for="Diastolic"> Blood Pressure(Distolic) </label>
         <input asp-for="Diastolic" value="@Model.Diastolic"/>
-        <span asp-validation-for="Diastolic"></span>
+        <span class="red-alert" asp-validation-for="Diastolic"></span>
     </div>
     <input type="submit" value="Update Vital Signs" class="btn btn-danger"/>
 </form>

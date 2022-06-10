@@ -20,10 +20,21 @@ namespace liftoffHealthCare.Controllers
             context = dbContext;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string sortOrder)
         {
-            List<Medication> medications = context.Medications.ToList();
-            return View(medications);
+            ViewData["MedSort"] = string.IsNullOrEmpty(sortOrder) ? "medSort" : "";
+            var medications = from m in context.Medications
+                              select m;
+            switch(sortOrder)
+            {
+                case "medSort":
+                    medications = medications.OrderBy(v => v.Name);
+                    break;
+                case "":
+                    medications = medications.OrderByDescending(v => v.Name);
+                    break;
+            }
+            return View(medications.ToList());
         }
 
         public IActionResult Add()
@@ -73,7 +84,7 @@ namespace liftoffHealthCare.Controllers
         {
             Medication medication = context.Medications.Find(id);
             AddMedicationViewModel viewModel = new AddMedicationViewModel();
-            viewModel.MedicationId = medication.Id;
+            viewModel.Id = medication.Id;
             viewModel.Name = medication.Name;
             viewModel.Dosage = medication.Dosage;
             viewModel.Instruction = medication.Instruction;

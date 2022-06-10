@@ -1,4 +1,6 @@
-﻿namespace liftoffHealthCare.Models
+﻿using System.Collections.Generic;
+
+namespace liftoffHealthCare.Models
 {
     public enum Instructions
     {

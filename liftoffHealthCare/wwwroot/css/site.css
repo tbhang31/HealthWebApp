@@ -18,6 +18,7 @@ a {
   border-color: #1861ac;
 }
 
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
   color: #fff;
   background-color: #1b6ec2;
@@ -53,21 +54,115 @@ button.accept-policy {
 
 /* Sticky footer styles
 -------------------------------------------------- */
+
 html {
   position: relative;
   min-height: 100%;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: 'Source Sans Pro', sans-serif;
 }
+
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+/*footer.footer.border-top.text-muted {
+    background-color: rgb(223,69,69);
+}*/
+
+.heart:hover {
+    animation: zoom-in-zoom-out 1s ease infinite;
+}
+
+.animate-button {
+    transition: transform 0.5s;
+}
+.animate-button:hover {
+    transform: scale(1.25);
+}
+
+
+@keyframes zoom-in-zoom-out {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.5, 1.5);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.flex-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-child {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.footer-link, .footer-link:link, .footer-link:hover {
+    margin: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+.fa-regular, .fa-circle-check {
+    color: rgb(223,69,69);
+}
+
+.mission-statement {
+    color: rgb(223,69,69);      
+    font-style: italic;
+}
+
+.cancel:hover, .cancel:link, .cancel {
+    color: white;
+    text-decoration: none;
+}
+
+.red-alert {
+    color: red;
+    font-weight:bold;
+    text-align: center;
+} 
+
+.icon-section {
+    margin: 20px 20px 0 0;
+}
+
+.vital-high {
+    color: red;
+    font-weight: bold;
+}
+
+.vital-low {
+    color:dodgerblue;
+    font-style:italic;
 }
 
 a #cancelLink .cancelLink {

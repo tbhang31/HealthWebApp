@@ -10,18 +10,19 @@ namespace liftoffHealthCare.Models
         public int HeartRate { get; set; }
         public int Systolic { get; set; }
         public int Diastolic { get; set; }
-        public List<Medication> Medications { get; set; }
+        public List<VitalMedication> VitalMedications { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
 
         public string ApplicationUserId { get; set; }
 
-        public Vital(DateTime date, int heartRate, int systolic, int diastolic, string applicationUserId)
+        public Vital(DateTime date, int heartRate, int systolic, int diastolic, List<VitalMedication> vitalMedications,string applicationUserId)
         {
             Date = date;
             HeartRate = heartRate;
             Systolic = systolic;
             Diastolic = diastolic;
+            VitalMedications = vitalMedications;
             ApplicationUserId = applicationUserId;
         }
 

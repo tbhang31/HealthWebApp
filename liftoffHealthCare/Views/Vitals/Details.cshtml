@@ -1,0 +1,21 @@
+﻿@using System.Globalization
+@model liftoffHealthCare.ViewModels.VitalsMedicationViewModel;
+
+<h3>Vitals signs for @Model.Date.ToString("d", DateTimeFormatInfo.InvariantInfo)</h3>
+<br>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Heart Rate</th>
+        <th>Blood Pressure</th>
+        <th>Medications Taken</th>
+    </tr>
+    <tr>
+        <td>@Model.HeartRate</td>
+        <td>@Model.Systolic / @Model.Diastolic</td>
+        <td>@Model.MedText</td>
+    </tr>
+</table>
+<form asp-controller="Vitals" asp-action="Index">
+    <input type="submit" class="btn btn-danger" value="Back"/>
+</form>
